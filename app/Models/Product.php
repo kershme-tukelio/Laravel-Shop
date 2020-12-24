@@ -13,4 +13,7 @@ class Product extends Model
     public function getAvailable() {
         return $this->available;
     }
+    public function setAvailable($value) {
+        $this->available = $value;
+    }
 }

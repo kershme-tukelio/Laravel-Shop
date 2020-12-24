@@ -48,7 +48,7 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        
     }
 
     /**
@@ -59,10 +59,10 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        if($product->available) {
-            $product->available = false;
+        if($product->getAvailable()) {
+            $product->setAvailable(false);
         } else {
-            $product->available = true;
+            $product->setAvailable(true);
         }
 
         return redirect('/');
