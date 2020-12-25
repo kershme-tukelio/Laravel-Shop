@@ -39,7 +39,11 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request);
+        $product = Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'available' => $request->available
+        ]);
         $product->categories()->attach($request->category_id);
 
         return redirect('/');

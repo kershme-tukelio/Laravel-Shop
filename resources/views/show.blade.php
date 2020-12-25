@@ -8,7 +8,7 @@
 <h3>{{$product->description}}</h3>
 <h3>Categories: <br/></h3>
 <ul>
-    @foreach($categories as $category)
+    @foreach($product->categories as $category)
         <li>{{$category->name}}</li>
     @endforeach
 </ul>
