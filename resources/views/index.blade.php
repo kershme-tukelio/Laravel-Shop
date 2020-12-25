@@ -8,7 +8,7 @@
 <ul>
     @foreach($products as $product)
         @if($product->getAvailable())
-            <li><a href="#">{{$product->name}}</a></li>
+            <li><a href="/products/{{$product->id}}">{{$product->name}}</a></li>
         @endif
     @endforeach
 </ul>

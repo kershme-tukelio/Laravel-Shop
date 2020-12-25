@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-
-        return view('index', compact('products'));
+        //
     }
 
     /**
@@ -27,8 +24,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('create', compact('categories'));
+        //
     }
 
     /**
@@ -39,50 +35,41 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request);
-        $product->categories()->attach($request->category_id);
+        Category::create(['name' => $request->name]);
 
-        return redirect('/');
+        return redirect('/categories');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        $product = Product::with('categories')->findOrFail($id);
-
-        return view('show', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Category $category)
     {
-        if($product->getAvailable()) {
-            $product->setAvailable(false);
-        } else {
-            $product->setAvailable(true);
-        }
-
-        return redirect('/');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -90,10 +77,10 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Category $category)
     {
         //
     }

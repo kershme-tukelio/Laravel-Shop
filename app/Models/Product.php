@@ -16,4 +16,7 @@ class Product extends Model
     public function setAvailable($value) {
         $this->available = $value;
     }
+    public function categories() {
+        return $this->belongsToMany(Category::class);
+    }
 }
